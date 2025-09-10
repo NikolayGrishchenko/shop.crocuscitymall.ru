@@ -10,15 +10,36 @@
 					<section class="bullets">
 						<figure class="bullet">
 							<span class="b-glyph b-shipping"></span>
-							<p>66 км МКАД, Московская обл., г. Красногорск, ул. Международная д. 8</p>
+							<p><?$APPLICATION->IncludeComponent(
+								"bitrix:main.include",
+								"",
+								[
+									"AREA_FILE_SHOW" => "file", 
+									"PATH" => SITE_DIR . '/include/footer_address.php', 
+								]
+							);?></p>
 						</figure>
 						<figure class="bullet">
 							<span class="b-glyph b-payment"></span>
-							<p>+7 (962) 948-4878</p>
+							<p><?$APPLICATION->IncludeComponent(
+								"bitrix:main.include",
+								"",
+								[
+									"AREA_FILE_SHOW" => "file", 
+									"PATH" => SITE_DIR . '/include/footer_phone.php', 
+								]
+							);?></p>
 						</figure>
 						<figure class="bullet">
 							<span class="b-glyph b-location"></span>
-							<p><a href="mailto:online@crocuscitymall.ru">online@crocuscitymall.ru</a></p>
+							<p><?$APPLICATION->IncludeComponent(
+								"bitrix:main.include",
+								"",
+								[
+									"AREA_FILE_SHOW" => "file", 
+									"PATH" => SITE_DIR . '/include/footer_email.php', 
+								]
+							);?></p>
 						</figure>
 					</section>
 					<div class="clear-both"></div>
