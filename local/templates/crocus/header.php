@@ -5,10 +5,15 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="shortcut icon" type="image/x-icon" href="<?=SITE_DIR?>favicon.ico" />
 		<? $APPLICATION->setAdditionalCss(SITE_TEMPLATE_PATH . '/css/bootstrap.min.css'); ?>
+
+		<? $APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH . '/js/jquery-3.7.1.min.js'); ?>
+		<? $APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH . '/js/bootstrap.min.js'); ?>
+		
 		<? $APPLICATION->ShowHead(); ?>
 		<title><?$APPLICATION->ShowTitle()?></title>
 	</head>
 	<body>
+		<?$APPLICATION->ShowPanel();?>
 		<header class="header">
 			<div class="container">
 				<div class="row justify-content-between">
