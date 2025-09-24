@@ -1,5 +1,6 @@
 <?php
 $arUrlRewrite=array (
+  0 => 
   array (
     'CONDITION' => '#^/personal/order/#',
     'RULE' => '',
@@ -7,6 +8,7 @@ $arUrlRewrite=array (
     'PATH' => '/personal/order/index.php',
     'SORT' => 100,
   ),
+  1 => 
   array (
     'CONDITION' => '#^/personal/#',
     'RULE' => '',
@@ -14,6 +16,7 @@ $arUrlRewrite=array (
     'PATH' => '/personal/index.php',
     'SORT' => 100,
   ),
+  4 => 
   array (
     'CONDITION' => '#^/catalog/#',
     'RULE' => '',
@@ -21,6 +24,7 @@ $arUrlRewrite=array (
     'PATH' => '/catalog/index.php',
     'SORT' => 100,
   ),
+  3 => 
   array (
     'CONDITION' => '#^/rest/#',
     'RULE' => '',

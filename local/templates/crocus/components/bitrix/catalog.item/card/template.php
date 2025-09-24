@@ -1,12 +1,14 @@
 <div class="col-3 card-wrapper">
 	<?if (!empty($arResult['PREVIEW_PICTURE']) || !empty($arResult['DETAIL_PICTURE'])):?>
 		<div class="row">
-			<a href="<?=$arResult['DETAIL_PAGE_URL']?>" class="col-12 card-image">
-				<?if (!empty($arResult['PREVIEW_PICTURE'])):?>
-					<img src="<?=$arResult['PREVIEW_PICTURE']['SRC']?>" class="img-fluid" alt="<?=$arResult['NAME']?>">
-				<?elseif (!empty($arResult['DETAIL_PICTURE'])):?>
-					<img src="<?=$arResult['DETAIL_PICTURE']['SRC']?>" class="img-fluid" alt="<?=$arResult['NAME']?>">
-				<?endif;?>
+			<a href="<?=$arResult['DETAIL_PAGE_URL']?>" class="col-12 d-flex justify-content-center align-items-center">
+				<div class="card-image">
+					<?if (!empty($arResult['PREVIEW_PICTURE'])):?>
+						<img src="<?=$arResult['PREVIEW_PICTURE']['SRC']?>" class="img-fluid" alt="<?=$arResult['NAME']?>">
+					<?elseif (!empty($arResult['DETAIL_PICTURE'])):?>
+						<img src="<?=$arResult['DETAIL_PICTURE']['SRC']?>" class="img-fluid" alt="<?=$arResult['NAME']?>">
+					<?endif;?>
+				</div>
 			</a>
 		</div>
 	<?endif;?>

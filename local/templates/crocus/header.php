@@ -17,8 +17,8 @@
 		<header class="header">
 			<div class="container">
 				<div class="row justify-content-between">
-					<div class="col d-flex align-items-center p-2">
-						<h2>
+					<div class="col d-flex align-items-center">
+						<h2 class="pt-2">
 							<a href="/">
 								<img src="/images/logo.png">
 							</a>
@@ -87,4 +87,4 @@
 				</div>
 			</div>
 		</header>
-		<main>
+		<main class="container position-relative pt-3 pb-3">
