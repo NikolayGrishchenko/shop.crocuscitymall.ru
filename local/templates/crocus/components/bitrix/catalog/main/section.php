@@ -88,13 +88,13 @@ $APPLICATION->IncludeComponent(
 unset($sectionListParams);
 //endregion
 
-// todo filter
 $APPLICATION->IncludeComponent(
 	"grishchenko:filter",
 	"",
 	array(
 		'IBLOCK_ID' => $arParams['IBLOCK_ID'],
 		'SECTION_ID' => $arCurSection['ID'],
+		'FILTER_NAME' => $arParams["FILTER_NAME"],
 	)
 );
 

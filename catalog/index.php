@@ -33,7 +33,7 @@ require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
 		"DETAIL_DISPLAY_NAME" => "N",
 		"USE_ELEMENT_COUNTER" => "Y",
 		"USE_FILTER" => "Y",
-		"FILTER_NAME" => "",
+		"FILTER_NAME" => "arFilter",
 		"FILTER_VIEW_MODE" => "VERTICAL",
 		"USE_COMPARE" => "N",
 		"PRICE_CODE" => array(
