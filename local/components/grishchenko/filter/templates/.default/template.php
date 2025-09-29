@@ -1,4 +1,10 @@
 <form class="catalog-filter" method="GET" action="">
+	<?if (!empty($_REQUEST['sort'])):?>
+		<input type="hidden" name="sort" value="<?=$_REQUEST['sort']?>">
+	<?endif;?>
+	<?if (!empty($_REQUEST['order'])):?>
+		<input type="hidden" name="order" value="<?=$_REQUEST['order']?>">
+	<?endif;?>
 	<div class="catalog-filter-title">Фильтр</div>
 	<div class="catalog-filter-items">
 		<?foreach ($arResult['FILTER'] as $filter):?>
