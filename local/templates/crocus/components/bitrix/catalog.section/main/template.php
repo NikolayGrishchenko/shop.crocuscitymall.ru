@@ -6,7 +6,8 @@
 			[
 				'PARANS' => [],
 				'RESULT' => $item,
-			]
+			],
+			$component
 		);?>
 	<?endforeach;?>
 </div>
