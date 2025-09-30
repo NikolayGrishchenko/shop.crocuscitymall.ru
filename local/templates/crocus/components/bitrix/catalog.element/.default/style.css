@@ -1,0 +1,60 @@
+.catalog-element .compare-at-price {
+	text-decoration: line-through;
+	color: #c99;
+	margin: 0 3px;
+}
+.catalog-element .price {
+	color: #000000;
+	font-weight: 500;
+	font-size: 30px;
+}
+.catalog-element .sku-selector-wrapper {
+	display: flex;
+	justify-content: flex-start;
+	align-content: flex-start;
+	flex-wrap: wrap;
+	padding-bottom: 15px;
+	border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+	margin-bottom: 15px;
+}
+.catalog-element .sku-selector-wrapper.singleline {
+	justify-content: space-between;
+	flex-wrap: initial;
+}
+.catalog-element .sku-selector-title {
+	color: rgba(102, 102, 102, 1);
+	display: block;
+	margin-bottom: 5px;
+}
+.catalog-element .sku-selector-items {
+	display: flex;
+	justify-content: flex-start;
+	align-content: flex-start;
+	flex-wrap: wrap;
+}
+.catalog-element .sku-selector {
+	width: 60px;
+	height: 60px;
+	display: flex;
+	justify-content: center;
+	align-content: center;
+	border: 1px solid rgba(0, 0, 0, 0.1);
+	box-sizing: border-box;
+}
+.catalog-element .sku-selector:not(:last-child) {
+	margin-right: 10px;
+}
+.catalog-element .sku-selector:hover {
+	border-color: rgba(179, 159, 94, 1);
+}
+.catalog-element .sku-selector.selected {
+	border-color: rgba(179, 159, 94, 1);
+}
+.catalog-element .sku-selector-input {
+	display: none;
+}
+.catalog-element .sku-selector-text {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
