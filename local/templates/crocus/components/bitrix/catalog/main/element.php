@@ -172,23 +172,19 @@ $componentElementParams = array(
 	'GIFTS_MAIN_PRODUCT_DETAIL_HIDE_BLOCK_TITLE' => $arParams['GIFTS_MAIN_PRODUCT_DETAIL_HIDE_BLOCK_TITLE'],
 );
 
-if (isset($arParams['USER_CONSENT']))
-{
+if (isset($arParams['USER_CONSENT'])) {
 	$componentElementParams['USER_CONSENT'] = $arParams['USER_CONSENT'];
 }
 
-if (isset($arParams['USER_CONSENT_ID']))
-{
+if (isset($arParams['USER_CONSENT_ID'])) {
 	$componentElementParams['USER_CONSENT_ID'] = $arParams['USER_CONSENT_ID'];
 }
 
-if (isset($arParams['USER_CONSENT_IS_CHECKED']))
-{
+if (isset($arParams['USER_CONSENT_IS_CHECKED'])) {
 	$componentElementParams['USER_CONSENT_IS_CHECKED'] = $arParams['USER_CONSENT_IS_CHECKED'];
 }
 
-if (isset($arParams['USER_CONSENT_IS_LOADED']))
-{
+if (isset($arParams['USER_CONSENT_IS_LOADED'])) {
 	$componentElementParams['USER_CONSENT_IS_LOADED'] = $arParams['USER_CONSENT_IS_LOADED'];
 }
 
