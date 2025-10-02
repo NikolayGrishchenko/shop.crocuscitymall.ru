@@ -34,7 +34,42 @@ if (empty($price)) {
 		<h1><?=$arResult['NAME']?></h1>
 	</div>
 	<div class="col-8">
-		images
+		<?
+		$images = [];
+		if (!empty($arResult['PROPERTIES']['IMAGE']['VALUE'])) {
+			$images = $arResult['PROPERTIES']['IMAGE']['VALUE'];
+		} elseif (!empty($arResult['DETAIL_PICTURE'])) {
+			$images[] = $arResult['DETAIL_PICTURE']['ID'];
+		}
+		
+		if (!empty($images)):?>
+			<div class="image-wrapper">
+				<div class="image-preview-wrapper">
+					<?foreach ($images as $key => $image):?>
+						<div class="image-preview<?if ($key == 0):?> active<?endif;?>" data-image-preview="<?=$image?>">
+							<img src="<?=CFile::getPath($image)?>" class="img-fluid" alt="<?=$arResult['NAME']?>" />
+						</div>
+					<?endforeach;?>
+				</div>
+				<div class="image-show-wrapper">
+					<?foreach ($images as $key => $image):?>
+						<div class="image-show<?if ($key == 0):?> active<?endif;?>" data-image-show="<?=$image?>">
+							<img src="<?=CFile::getPath($image)?>" class="img-fluid" alt="<?=$arResult['NAME']?>" />
+						</div>
+					<?endforeach;?>
+				</div>
+				<div class="image-full-modal" data-image-modal>
+					<div class="image-close" data-image-modal-close>&times;</div>
+					<div class="image-full-wrapper">
+						<?foreach ($images as $key => $image):?>
+							<div class="image-full" data-image-full="<?=$image?>">
+								<img src="<?=CFile::getPath($image)?>" class="img-fluid" alt="<?=$arResult['NAME']?>" />
+							</div>
+						<?endforeach;?>
+					</div>
+				</div>
+			</div>
+		<?endif;?>
 	</div>
 	<div class="col-4">
 		<div class="row">
@@ -96,7 +131,7 @@ if (empty($price)) {
 						<input class="cart-quantity-value" type="text" name="quantity" value="1">
 						<div class="cart-value-button" data-increase>+</div>
 					</div>
-            		<button type="button" class="cart-button">В корзину</button>
+            		<button type="button" class="cart-button" data-basket-button>В корзину</button>
             	</div>
 				</div>
 			</div>
@@ -110,4 +145,3 @@ if (empty($price)) {
 		</div>
 	<?endif;?>
 </div>
-<pre><?print_r($arResult)?></pre>

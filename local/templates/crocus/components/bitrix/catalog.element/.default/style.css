@@ -87,8 +87,8 @@
 }
 .catalog-element .cart-value-button:hover {
 	color: #fff;
-    background: #B39F5E;
-    border: 1px solid #B39F5E;
+	background: #B39F5E;
+	border: 1px solid #B39F5E;
 }
 .catalog-element .cart-quantity-value {
 	text-align: center;
@@ -100,17 +100,89 @@
 	height: 40px;
 }
 .catalog-element .cart-button {
-    width: 260px;
-    margin-top: 10px;
-    padding: 19px 30px 18px 30px;
-    outline: 0;
+	width: 260px;
+	margin-top: 10px;
+	padding: 19px 30px 18px 30px;
+	outline: 0;
 	color: #fff;
-    font-size: 18px;
-    background: #B39F5E;
-    border: none;
-    text-transform: uppercase;
-    font-weight: 100;
+	font-size: 18px;
+	background: #B39F5E;
+	border: none;
+	text-transform: uppercase;
+	font-weight: 100;
 }
 .catalog-element .cart-button:hover {
 	background: #000;
+}
+.catalog-element .image-wrapper {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	flex-wrap: wrap;
+}
+.catalog-element .image-preview-wrapper {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 80px;
+	flex-wrap: wrap;
+}
+.catalog-element .image-preview {
+	width: 100%;
+	margin-bottom: 10px;
+	cursor: pointer;
+	border: 1px solid transparent;
+}
+.catalog-element .image-preview.active {
+	border: 1px solid #B39F5E;
+}
+.catalog-element .image-show-wrapper {
+	width: calc(100% - 80px);
+	padding: 15px;
+}
+.catalog-element .image-show {
+	cursor: pointer;
+}
+.catalog-element .image-show:not(.active) {
+	display: none;
+}
+.catalog-element .image-full-modal {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background: #fff;
+	z-index: 1100;
+}
+.catalog-element .image-full-modal:not(.active) {
+	display: none;
+}
+.catalog-element .image-close {
+	position: absolute;
+	top: 0;
+	right: 50px;
+	font-size: 72px;
+	cursor: pointer;
+}
+.catalog-element .image-full-wrapper {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.catalog-element .image-full {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.catalog-element .image-full img {
+	max-width: 100%;
+	max-height: 100%;
+}
+.catalog-element .image-full:not(.active) {
+	display: none;
 }
