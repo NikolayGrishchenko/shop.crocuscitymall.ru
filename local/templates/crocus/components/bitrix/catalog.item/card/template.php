@@ -28,9 +28,11 @@
 			</div>
 		</div>
 		<div class="col-auto">
-			<div class="card-basket" title="Добавить в корзину">
-				<img src="<?=$templateFolder?>/images/basket.svg">
-			</div>
+			<?if (!empty($arResult['OFFERS'])):?>
+				<div class="card-basket" title="Добавить в корзину" data-basket-url="<?=$arResult['DETAIL_PAGE_URL']?>?action=BUY&id=<?=$arResult['OFFERS'][0]['ID']?>">
+					<img src="<?=$templateFolder?>/images/basket.svg">
+				</div>
+			<?endif;?>
 		</div>
 	</div>
 </div>

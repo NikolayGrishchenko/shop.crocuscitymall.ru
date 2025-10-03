@@ -8,6 +8,7 @@
 
 		<? $APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH . '/js/jquery-3.7.1.min.js'); ?>
 		<? $APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH . '/js/bootstrap.min.js'); ?>
+		<? $APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH . '/js/script.js'); ?>
 		
 		<? $APPLICATION->ShowHead(); ?>
 		<title><?$APPLICATION->ShowTitle()?></title>
@@ -45,13 +46,10 @@
 							<input id="search" type="search" name="query" placeholder="Найти товары">
 						</form>
 						<div id="cart" class="cart">
-							<a href="/order/" class="cart-summary">
+							<a href="/basket/" class="cart-summary">
 								<i class="cart-icon"></i>
-								<i class="cart-count">1</i>
-								<strong class="cart-total">38 950 <span class="ruble">₽</span></strong>
+								<i class="cart-count" data-basket-quantity></i>
 							</a>
-							<div id="cart-content"></div>
-							<a href="/order/" class="cart-to-checkout" style="display: none;">Посмотреть корзину</a>
 						</div>
 						<div id="menuToggle">
 							<input type="checkbox">

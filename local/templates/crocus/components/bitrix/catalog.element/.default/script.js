@@ -66,7 +66,11 @@ $(function() {
 			method: 'POST',
 			dataType: 'json',
 			success: function(res) {
-				debugger;
+				if (res.STATUS == 'OK') {
+					refreshBasketCount();
+				} else {
+					alert(res.MESSAGE);
+				}
 			},
 			error: function(a) {
 				alert('Ошибка: ' + a.status + ' ' + a.statusText);

@@ -16,8 +16,22 @@ if (!empty($ids)) {
 		$mapPrice[$item['PRODUCT_ID']] = $item['PRICE'];
 	}
 
+	$mapOffer = [];
+	$res = CIBlockElement::getList([], [
+		'IBLOCK_CODE' => 'catalog_offers',
+		'PROPERTY_CML2_LINK' => $ids,
+		'ACTIVE' => 'Y',
+	]);
+	while ($ob = $res->getNextElement()) {
+		$item = $ob->getFields();
+		$item['PROPERTIES'] = $ob->getProperties();
+
+		$mapOffer[$item['PROPERTIES']['CML2_LINK']['VALUE']][] = $item;
+	}
+
 	foreach ($arResult['ITEMS'] as &$item) {
 		$item['PRICE'] = $mapPrice[$item['ID']];
+		$item['OFFERS'] = $mapOffer[$item['ID']];
 	}
 	unset($item);
 }
