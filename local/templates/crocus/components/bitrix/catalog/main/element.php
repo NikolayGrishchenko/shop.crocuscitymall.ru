@@ -193,4 +193,4 @@ $elementId = $APPLICATION->IncludeComponent(
 	'',
 	$componentElementParams,
 	$component
-);?>
+);

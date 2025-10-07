@@ -1,7 +1,11 @@
 <?
+
 define("HIDE_SIDEBAR", true);
+
 require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
+
 $APPLICATION->SetTitle("");
+
 ?><?$APPLICATION->IncludeComponent(
 	"bitrix:catalog",
 	"main",
@@ -222,4 +226,5 @@ $APPLICATION->SetTitle("");
 		"USE_SALE_BESTSELLERS" => "Y",
 		"USE_STORE" => "Y"
 	)
-);?><?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>
+);?><?
+require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");
