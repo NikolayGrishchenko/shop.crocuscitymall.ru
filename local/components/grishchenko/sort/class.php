@@ -2,6 +2,8 @@
 if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true) die();
 
 use Bitrix\Main\Loader;
+use Bitrix\Main\Context;
+use Bitrix\Main\Web\Uri;
 
 class GrishchenkoSortComponent extends CBitrixComponent
 {
@@ -53,9 +55,23 @@ class GrishchenkoSortComponent extends CBitrixComponent
             $sort['DATE']['ACTIVE'] = true;
         }
 
+        $request = Context::getCurrent()->getRequest();
+        $currentUrl = $request->getRequestUri();
+        $baseUri = new Uri($currentUrl);
+        foreach ($sort as $sIndex => $item)
+        {
+            $itemUri = clone $baseUri;
+            $itemUri->addParams([
+                'sort' => $item['CODE'],
+                'order' => $item['DIRECTION'] == 'ASC' ? 'DESC' : 'ASC',
+            ]);
+
+            $sort[$sIndex]['HREF'] = $itemUri->getUri();
+        }
+
         $this->arResult['SORT'] = $sort;
 
-        $activeSort = array_filter($sort, function($item) {
+        $activeSort = array_filter($sort, function ($item) {
             return $item['ACTIVE'];
         });
         if (!empty($activeSort)) {
@@ -72,4 +88,3 @@ class GrishchenkoSortComponent extends CBitrixComponent
         $this->includeComponentTemplate();
     }
 }
-?>
