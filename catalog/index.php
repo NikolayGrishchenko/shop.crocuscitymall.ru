@@ -1,11 +1,7 @@
 <?
-
 define("HIDE_SIDEBAR", true);
-
 require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
-
 $APPLICATION->SetTitle("");
-
 ?><?$APPLICATION->IncludeComponent(
 	"bitrix:catalog",
 	"main",
@@ -18,6 +14,7 @@ $APPLICATION->SetTitle("");
 		"ADD_SECTION_CHAIN" => "Y",
 		"AJAX_MODE" => "N",
 		"AJAX_OPTION_ADDITIONAL" => "",
+		"AJAX_OPTION_HISTORY" => "N",
 		"AJAX_OPTION_HISTORY" => "N",
 		"AJAX_OPTION_JUMP" => "N",
 		"AJAX_OPTION_STYLE" => "Y",
@@ -182,7 +179,14 @@ $APPLICATION->SetTitle("");
 		"SECTION_TOP_DEPTH" => "1",
 		"SEF_FOLDER" => "/catalog/",
 		"SEF_MODE" => "Y",
-		"SEF_URL_TEMPLATES" => Array("compare"=>"compare/","element"=>"#SECTION_CODE#/#ELEMENT_CODE#/","section"=>"#SECTION_CODE#/","sections"=>"","smart_filter"=>"#SECTION_CODE#/filter/#SMART_FILTER_PATH#/apply/"),
+		"SEF_URL_TEMPLATES" => Array(
+			"compare"=>"compare/",
+			"element"=>"#SECTION_CODE#/#ELEMENT_CODE#/",
+			"section"=>"#SECTION_CODE#/",
+			"sections"=>"",
+			"smart_filter"=>"#SECTION_CODE#/filter/#SMART_FILTER_PATH#/apply/",
+			"brand"=>"#SECTION_CODE#/brands/#BRAND_CODE#/",
+		),
 		"SET_LAST_MODIFIED" => "N",
 		"SET_STATUS_404" => "Y",
 		"SET_TITLE" => "Y",

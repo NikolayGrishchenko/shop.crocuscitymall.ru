@@ -84,7 +84,11 @@ if (empty($price)) {
 					<div class="sku-selector-wrapper singleline">
 						<div class="sku-selector-title">Бренд</div>
 						<div class="sku-selector-value">
-							<a href="<?=$arResult['BRAND']['DETAIL_PAGE_URL']?>"><?=$arResult['BRAND']['NAME']?></a>
+							<? if (!empty($arResult['BRAND']['DETAIL_PAGE_URL'])): ?>
+								<a href="<?=$arResult['BRAND']['DETAIL_PAGE_URL']?>"><?=$arResult['BRAND']['NAME']?></a>
+							<? else: ?>
+								<?=$arResult['BRAND']['NAME']?>
+							<? endif; ?>
 						</div>
 					</div>
 				<?endif;?>
