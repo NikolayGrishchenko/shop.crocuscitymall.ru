@@ -17,11 +17,12 @@ $brandFilter = [];
 if ($sectionCode && $sectionCode !== 'all')
 {
 	$brandIds = [];
-	$sectionRes = CIBlockSection::GetList([], ['IBLOCK_ID' => 1, 'CODE' => $sectionCode], false, ['ID']);
-	if ($section = $sectionRes->Fetch()) {
+	$sectionRes = CIBlockSection::GetList([], ['IBLOCK_ID' => CATALOG_IBLOCK_ID, 'CODE' => $sectionCode], false, ['ID']);
+	if ($section = $sectionRes->Fetch())
+	{
 		$sectionId = $section['ID'];
 		$productRes = CIBlockElement::GetList([], [
-			'IBLOCK_ID' => 1,
+			'IBLOCK_ID' => CATALOG_IBLOCK_ID,
 			'SECTION_ID' => $sectionId,
 			'ACTIVE' => 'Y'
 		], ['PROPERTY_BRAND']);
@@ -44,7 +45,7 @@ if ($sectionCode && $sectionCode !== 'all')
 		"DISPLAY_PREVIEW_TEXT" => "Y",
 		"AJAX_MODE" => "Y",
 		"IBLOCK_TYPE" => "references",
-		"IBLOCK_ID" => "4",
+		"IBLOCK_ID" => BRAND_IBLOCK_ID,
 		"NEWS_COUNT" => "200",
 		"SORT_BY1" => "SORT",
 		"SORT_ORDER1" => "ASC",
@@ -92,6 +93,4 @@ if ($sectionCode && $sectionCode !== 'all')
 		"AJAX_OPTION_ADDITIONAL" => "",
 		"PRODUCT_SECTION_CODE" => $sectionCode,
 	)
-);?><?
-
-require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");
+);?>

@@ -14,6 +14,8 @@ if (count($uriParts) >= 3 && $uriParts[0] === 'catalog' && $uriParts[2] === 'bra
 
     require($_SERVER["DOCUMENT_ROOT"]."/catalog/brands_list.php");
 
+	require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");
+
     return;
 }
 
@@ -111,7 +113,7 @@ if (count($uriParts) >= 3 && $uriParts[0] === 'catalog' && $uriParts[2] === 'bra
 		"GIFTS_SHOW_OLD_PRICE" => "Y",
 		"HIDE_NOT_AVAILABLE" => "N",
 		"HIDE_NOT_AVAILABLE_OFFERS" => "N",
-		"IBLOCK_ID" => "2",
+		"IBLOCK_ID" => CATALOG_IBLOCK_ID,
 		"IBLOCK_TYPE" => "catalog",
 		"INCLUDE_SUBSECTIONS" => "Y",
 		"INSTANT_RELOAD" => "N",

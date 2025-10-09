@@ -10,7 +10,8 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 use Bitrix\Main\Loader;
 use Bitrix\Iblock\Iblock;
 
-if (!Loader::includeModule('iblock')) {
+if (!Loader::includeModule('iblock'))
+{
 	ShowError('Module iblock not installed');
 	return;
 }
@@ -59,7 +60,7 @@ $sectionName = $section['NAME'] ?? '';
 // --------------------------------------------------
 // Get brand element by CODE
 // --------------------------------------------------
-$brand = Iblock::wakeUp(4)->getEntityDataClass()::getList([
+$brand = Iblock::wakeUp(BRAND_IBLOCK_ID)->getEntityDataClass()::getList([
 	'filter' => ['=CODE' => $brandCode],
 	'select' => [
 		'ID',

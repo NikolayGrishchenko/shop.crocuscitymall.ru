@@ -1,15 +1,20 @@
 <?
 $price = null;
-foreach ($arResult['ITEM_PRICES'] as $item) {
-	if (!empty($item['PRICE'])) {
+foreach ($arResult['ITEM_PRICES'] as $item)
+{
+	if (!empty($item['PRICE']))
+	{
 		$price = $item['PRICE'];
 		break;
 	}
 }
 if (empty($price)) {
-	foreach ($arResult['OFFERS'] as $offer) {
-		foreach ($offer['ITEM_PRICES'] as $item) {
-			if (!empty($item['PRICE'])) {
+	foreach ($arResult['OFFERS'] as $offer)
+	{
+		foreach ($offer['ITEM_PRICES'] as $item)
+		{
+			if (!empty($item['PRICE']))
+			{
 				$price = $item['PRICE'];
 				break 2;
 			}
@@ -141,11 +146,11 @@ if (empty($price)) {
 			</div>
 		</div>
 	</div>
-	<?if (!empty($arResult['DETAIL_TEXT'])):?>
+	<? if (!empty($arResult['DETAIL_TEXT'])): ?>
 		<div class="col-12">
 			<h2>Описание</h2>
 			<hr/>
 			<div class="description"><?=$arResult['~DETAIL_TEXT']?></div>
 		</div>
-	<?endif;?>
+	<? endif; ?>
 </div>
