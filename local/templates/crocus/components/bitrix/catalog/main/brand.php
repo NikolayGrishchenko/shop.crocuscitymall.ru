@@ -332,5 +332,3 @@ $APPLICATION->IncludeComponent(
 	$component,
 	['HIDE_ICONS' => 'Y']
 );
-
-$APPLICATION->SetTitle($seoTitle);

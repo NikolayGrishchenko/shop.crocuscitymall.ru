@@ -1,7 +1,22 @@
 <?
 define("HIDE_SIDEBAR", true);
+
 require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
+
 $APPLICATION->SetTitle("");
+
+$request = Bitrix\Main\Context::getCurrent()->getRequest();
+$uri = $request->getRequestedPageDirectory();
+$uriParts = explode('/', trim($uri, '/'));
+if (count($uriParts) >= 3 && $uriParts[0] === 'catalog' && $uriParts[2] === 'brands' && empty($uriParts[3]))
+{
+    $sectionCode = $uriParts[1];
+
+    require($_SERVER["DOCUMENT_ROOT"]."/catalog/brands_list.php");
+
+    return;
+}
+
 ?><?$APPLICATION->IncludeComponent(
 	"bitrix:catalog",
 	"main",

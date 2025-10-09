@@ -1,4 +1,7 @@
-<?if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();
+<?
+
+if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
+
 /** @var array $arParams */
 /** @var array $arResult */
 /** @global CMain $APPLICATION */
@@ -10,6 +13,7 @@
 /** @var string $templateFolder */
 /** @var string $componentPath */
 /** @var CBitrixComponent $component */
+
 use Bitrix\Main\Loader;
 use Bitrix\Main\ModuleManager;
 
@@ -20,38 +24,51 @@ $arFilter = [
 	"ACTIVE" => "Y",
 	"GLOBAL_ACTIVE" => "Y",
 ];
-if (intval($arResult["VARIABLES"]["SECTION_ID"]) > 0) {
+if (intval($arResult["VARIABLES"]["SECTION_ID"]) > 0)
+{
 	$arFilter["ID"] = $arResult["VARIABLES"]["SECTION_ID"];
-} elseif ($arResult["VARIABLES"]["SECTION_CODE"] != '') {
+}
+elseif ($arResult["VARIABLES"]["SECTION_CODE"] != '')
+{
 	$arFilter["=CODE"] = $arResult["VARIABLES"]["SECTION_CODE"];
 }
 
 $obCache = new CPHPCache();
-if ($obCache->InitCache(36000, serialize($arFilter), "/iblock/catalog")) {
+if ($obCache->InitCache(36000, serialize($arFilter), "/iblock/catalog"))
+{
 	$arCurSection = $obCache->GetVars();
-} elseif ($obCache->StartDataCache()) {
+}
+elseif ($obCache->StartDataCache())
+{
 	$arCurSection = [];
-	if (Loader::includeModule("iblock")) {
+	if (Loader::includeModule("iblock"))
+	{
 		$dbRes = CIBlockSection::GetList([], $arFilter, false, ["ID"]);
 
-		if (defined("BX_COMP_MANAGED_CACHE")) {
+		if (defined("BX_COMP_MANAGED_CACHE"))
+		{
 			global $CACHE_MANAGER;
 			$CACHE_MANAGER->StartTagCache("/iblock/catalog");
 
-			if ($arCurSection = $dbRes->Fetch()) {
+			if ($arCurSection = $dbRes->Fetch())
+			{
 				$CACHE_MANAGER->RegisterTag("iblock_id_".$arParams["IBLOCK_ID"]);
 			}
 
 			$CACHE_MANAGER->EndTagCache();
-		} else {
-			if (!$arCurSection = $dbRes->Fetch()) {
+		}
+		else
+		{
+			if (!$arCurSection = $dbRes->Fetch())
+			{
 				$arCurSection = [];
 			}
 		}
 	}
 	$obCache->EndDataCache($arCurSection);
 }
-if (!isset($arCurSection)) {
+if (!isset($arCurSection))
+{
 	$arCurSection = [];
 }
 
@@ -72,9 +89,11 @@ $sectionListParams = array(
 	"HIDE_SECTION_NAME" => (isset($arParams["SECTIONS_HIDE_SECTION_NAME"]) ? $arParams["SECTIONS_HIDE_SECTION_NAME"] : "N"),
 	"ADD_SECTIONS_CHAIN" => (isset($arParams["ADD_SECTIONS_CHAIN"]) ? $arParams["ADD_SECTIONS_CHAIN"] : '')
 );
-if ($sectionListParams["COUNT_ELEMENTS"] === "Y") {
+if ($sectionListParams["COUNT_ELEMENTS"] === "Y")
+{
 	$sectionListParams["COUNT_ELEMENTS_FILTER"] = "CNT_ACTIVE";
-	if ($arParams["HIDE_NOT_AVAILABLE"] == "Y") {
+	if ($arParams["HIDE_NOT_AVAILABLE"] == "Y")
+	{
 		$sectionListParams["COUNT_ELEMENTS_FILTER"] = "CNT_AVAILABLE";
 	}
 }
