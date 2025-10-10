@@ -176,6 +176,25 @@ $sPhone = __normalizePhone($brand['CONTACT_PHONE_VALUE']);
 
 <?
 // --------------------------------------------------
+// Filter catalog products by this brand
+// --------------------------------------------------
+global $arrBrandElementFilter;
+$arrBrandElementFilter = ['=PROPERTY_BRAND' => $brand['ID']];
+
+if ($sectionCode !== 'all')
+{
+	$APPLICATION->IncludeComponent(
+		"grishchenko:filter",
+		"",
+		array(
+			'IBLOCK_ID' => $arParams['IBLOCK_ID'],
+			'SECTION_ID' => $sectionId,
+			'FILTER_NAME' => 'arrBrandElementFilter',
+		)
+	);
+}
+
+// --------------------------------------------------
 // Sort catalog products
 // --------------------------------------------------
 $APPLICATION->IncludeComponent(
@@ -185,12 +204,6 @@ $APPLICATION->IncludeComponent(
 		'SORT_NAME' => 'arSort',
 	)
 );
-
-// --------------------------------------------------
-// Filter catalog products by this brand
-// --------------------------------------------------
-global $arrBrandFilter;
-$arrBrandFilter = ['=PROPERTY_BRAND' => $brand['ID']];
 
 // --------------------------------------------------
 // Include catalog.section for filtered products
@@ -215,7 +228,7 @@ $arParams = [
 	"SECTION_ID_VARIABLE" => $arParams["SECTION_ID_VARIABLE"],
 	"PRODUCT_QUANTITY_VARIABLE" => $arParams["PRODUCT_QUANTITY_VARIABLE"],
 	"PRODUCT_PROPS_VARIABLE" => $arParams["PRODUCT_PROPS_VARIABLE"],
-	"FILTER_NAME" => "arrBrandFilter",
+	"FILTER_NAME" => "arrBrandElementFilter",
 	"CACHE_TYPE" => $arParams["CACHE_TYPE"],
 	"CACHE_TIME" => $arParams["CACHE_TIME"],
 	"CACHE_FILTER" => $arParams["CACHE_FILTER"],
