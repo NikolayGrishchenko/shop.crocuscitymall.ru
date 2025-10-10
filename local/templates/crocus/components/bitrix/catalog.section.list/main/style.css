@@ -1,0 +1,55 @@
+.catalog-sections {
+	margin-bottom: 20px;
+	padding-left: 0;
+	border-top: 1px solid #EEEEEE;
+	border-bottom: 1px solid #EEEEEE;
+}
+.catalog-sections li {
+	list-style: none;
+	line-height: 1.5em;
+	display: inline-block;
+	text-transform: uppercase;
+	margin-right: 15px;
+}
+.catalog-sections li a {
+	padding-top: 27px;
+	padding-bottom: 27px;
+	display:inline-block;
+}
+.catalog-sections li a:hover {
+	color: #B39F5E;
+	padding-bottom: 25px;
+	border-bottom: 2px solid #B39F5E;
+}
+.catalog-section-name {
+    font-family: Geometria, sans-serif;
+	font-size: 2.6em;;
+	text-transform: uppercase;
+    font-weight: 100;
+    margin-bottom: 20px;
+}
+
+.catalog-section-popup {
+  display: none;
+}
+.catalog-section-popup.show {
+  display: block;
+  position: absolute;
+  left: 0;
+  width: 100%;
+  background: #fff;
+  z-index: 2;
+  padding: 50px;
+}
+.catalog-section-popup-wrapper {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+.catalog-section-popup-item {
+  text-transform: uppercase;
+  display: block;
+}
+.catalog-section-column:not(:last-child) {
+  margin-right: 100px;
+}

@@ -1,0 +1,41 @@
+.card-wrapper {
+	border: 1px solid #DADADA;
+	padding-bottom: 30px;
+	text-transform: uppercase;
+    font-weight: 400;
+    font-size: 12px;
+}
+.card-wrapper:hover {
+	border: 1px solid #B39F5E;
+}
+.card-image {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 200px;
+	height: 200px;
+	overflow: hidden;
+}
+.card-name {
+	color: #000;
+	text-decoration: none;
+	display: block;
+}
+.card-brand {
+	color: #000;
+	text-decoration: none;
+	display: block;
+}
+.card-prices {
+
+}
+.card-price-old {
+    text-decoration: line-through;
+    color: #c99;
+}
+.card-price {
+
+}
+.card-basket {
+	cursor: pointer;
+}

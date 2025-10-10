@@ -1,3 +1,14 @@
+a {
+  color: #000000;
+  text-decoration: none;
+}
+a:visited {
+  color: #000000;
+}
+a:hover {
+  color: #B39F5E;
+}
+
 .maincategory {
 	list-style: none;
 	display: flex;
@@ -46,19 +57,19 @@ input[type=search] {
 	background: url(/images/search.svg) no-repeat 9px center;
 	padding: 9px 10px 9px 32px;
 	width: 0px;
-	background-position: right;
+	background-position: right 9px center;
 	transition: all .5s;
 	position: relative;
 	top: 6px;
-	right: 27px;
-	border-width: 1px;
+	right: 18px;
+	border-width: 0;
 	outline: none;
 }
 input[type=search]:not(:focus) {
 	border: none;
 }
 input[type=search]:focus {
-	width: 20vw;
+	width: 21vw;
 	background-color: #fff;
 	border-color: #CCC;
 	box-shadow: 0 0 1px #B39F5E;
@@ -248,4 +259,9 @@ footer a:hover { color: #B39F5E !important; }
 .bullet .b-glyph.b-location { background: url('/images/email.svg') no-repeat; }
 .bullet a {
     line-height: initial;
+}
+
+
+.search-heading {
+  margin-bottom: 20px;
 }
