@@ -181,18 +181,15 @@ $sPhone = __normalizePhone($brand['CONTACT_PHONE_VALUE']);
 global $arrBrandElementFilter;
 $arrBrandElementFilter = ['=PROPERTY_BRAND' => $brand['ID']];
 
-if ($sectionCode !== 'all')
-{
-	$APPLICATION->IncludeComponent(
-		"grishchenko:filter",
-		"",
-		array(
-			'IBLOCK_ID' => $arParams['IBLOCK_ID'],
-			'SECTION_ID' => $sectionId,
-			'FILTER_NAME' => 'arrBrandElementFilter',
-		)
-	);
-}
+$APPLICATION->IncludeComponent(
+	"grishchenko:filter",
+	"",
+	array(
+		'IBLOCK_ID' => $arParams['IBLOCK_ID'],
+		'SECTION_ID' => $sectionId,
+		'FILTER_NAME' => 'arrBrandElementFilter',
+	)
+);
 
 // --------------------------------------------------
 // Sort catalog products
