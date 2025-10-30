@@ -7,15 +7,13 @@ class GrishchenkoFilterComponent extends CBitrixComponent
 {
     public function executeComponent()
     {
-        if (!Loader::includeModule('iblock'))
-        {
+        if (!Loader::includeModule('iblock')) {
             ShowError('Module "iblock" is not installed.');
             return;
         }
 
         $this->arResult['FILTER'] = [];
-		if (!empty($this->arParams['SECTION_ID']) || $this->arParams['SECTION_ID'] === 0)
-		{
+		if (!empty($this->arParams['SECTION_ID']) || $this->arParams['SECTION_ID'] === 0) {
 			$products = [];
 			$res = CIBlockElement::getList([], [
 				'IBLOCK_ID' => $this->arParams['IBLOCK_ID'],
@@ -23,8 +21,7 @@ class GrishchenkoFilterComponent extends CBitrixComponent
 				'SECTION_ID' => $this->arParams['SECTION_ID'],
 				'INCLUDE_SUBSECTIONS' => 'Y',
 			]);
-			while ($ob = $res->getnextElement())
-			{
+			while ($ob = $res->getnextElement()) {
 				$item = $ob->getFields();
 				$item['PROPERTIES'] = $ob->getProperties();
 
@@ -32,15 +29,13 @@ class GrishchenkoFilterComponent extends CBitrixComponent
 			}
 
 			$offers = [];
-			if (!empty($products))
-			{
+			if (!empty($products)) {
 				$res = CIBlockElement::getList([], [
 					'IBLOCK_CODE' => 'catalog_offers',
 					'ACTIVE' => 'Y',
 					'PROPERTY_CML2_LINK' => array_column($products, 'ID'),
 				]);
-				while ($ob = $res->getNextElement())
-				{
+				while ($ob = $res->getNextElement()) {
 					$item = $ob->getFields();
 					$item['PROPERTIES'] = $ob->getProperties();
 
@@ -48,12 +43,15 @@ class GrishchenkoFilterComponent extends CBitrixComponent
 				}
 			}
 
+			$materials = [];
 			$brandIds = [];
-			foreach ($products as $item)
-			{
+			foreach ($products as $item) {
 				$brandIds[] = $item['PROPERTIES']['BRAND']['VALUE'];
+				$materials[] = $item['PROPERTIES']['MATERIAL']['VALUE'];
 			}
 			$brandIds = array_unique(array_filter($brandIds));
+			$materials = array_unique(array_filter($materials));
+
 
 			if (
 				$this->arParams['FILTER_NAME']
@@ -66,8 +64,7 @@ class GrishchenkoFilterComponent extends CBitrixComponent
 			}
 
 			$brands = [];
-			if (!empty($brandIds))
-			{
+			if (!empty($brandIds)) {
 				$res = CIBlockElement::getList(
 					[
 						'SORT' => 'ASC',
@@ -77,8 +74,7 @@ class GrishchenkoFilterComponent extends CBitrixComponent
 						'ACTIVE' => 'Y',
 					]
 				);
-				while ($item = $res->fetch())
-				{
+				while ($item = $res->fetch()) {
 					$brands[] = [
 						'ID' => $item['ID'],
 						'NAME' => $item['NAME'],
@@ -86,12 +82,24 @@ class GrishchenkoFilterComponent extends CBitrixComponent
 				}
 			}
 
-			if (!empty($brands))
-			{
+			if (!empty($brands)) {
 				$this->arResult['FILTER'][] = [
 					'CODE' => 'BRAND',
 					'NAME' => 'Бренд',
 					'VALUES' => $brands,
+				];
+			}
+
+			if (!empty($materials)) {
+				$this->arResult['FILTER'][] = [
+					'CODE' => 'MATERIAL',
+					'NAME' => 'Материал',
+					'VALUES' => array_map(function($item) {
+						return [
+							'ID' => $item,
+							'NAME' => $item,
+						];
+					}, $materials),
 				];
 			}
 
@@ -158,9 +166,12 @@ class GrishchenkoFilterComponent extends CBitrixComponent
 
 			$productIds = null;
 
-			if (array_key_exists('BRAND', $_REQUEST['FILTER']) && !empty($_REQUEST['FILTER']['BRAND']))
-			{
+			if (array_key_exists('BRAND', $_REQUEST['FILTER']) && !empty($_REQUEST['FILTER']['BRAND'])) {
 				${$this->arParams['FILTER_NAME']}['PROPERTY_BRAND'] = $_REQUEST['FILTER']['BRAND'];
+			}
+
+			if (array_key_exists('MATERIAL', $_REQUEST['FILTER']) && !empty($_REQUEST['FILTER']['MATERIAL'])) {
+				${$this->arParams['FILTER_NAME']}['PROPERTY_MATERIAL'] = $_REQUEST['FILTER']['MATERIAL'];
 			}
 
 			if (array_key_exists('SIZE', $_REQUEST['FILTER']) && !empty($_REQUEST['FILTER']['SIZE']))
